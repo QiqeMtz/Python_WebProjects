@@ -8,7 +8,7 @@ def index():
     if request.method == 'POST':
         return 'Esto es un POST'
     else:
-        return 'Hello!'
+        return 'Hello!' 
 
 @app.route('/hello')
 @app.route('/hello/<name>')
