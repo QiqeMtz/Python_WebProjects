@@ -11,9 +11,13 @@
         Hola
     </h1>
     <ul>
-        <li>Queso</li>
-        <li>Yogurth</li>
-        <li>Espejo</li>
+        <!-- Templates engine Django-->
+        {% for pr in product %}
+            <li>
+                {{ pr.name }} | 
+                {{ pr.description }}
+            </li>
+        {% endfor %}
     </ul>
 </body>
 </html>
