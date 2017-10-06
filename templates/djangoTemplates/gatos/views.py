@@ -14,3 +14,13 @@ def gato(request):
         'title': title
     }
     return HttpResponse(template.render(context, request))
+
+def saludo(request):
+    template = loader.get_template('saludo.html')
+    big_title = 'Encabezado de la pagina'
+    title = 'Aqui no hay gatos, es un saludo'
+    context = {
+        'big_title': big_title,
+        'title': title
+    }
+    return HttpResponse(template.render(context, request))
