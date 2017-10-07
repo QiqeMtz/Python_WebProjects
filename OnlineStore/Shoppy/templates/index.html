@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- etiqueta de django para cargar los archivos estaticos como archivos css -->
+    {% load staticfiles %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hello World</title>
+    <!-- aqui se observa como se utiliza el tag para cargar un css utilizando django -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
     <h1 style="color:red">
@@ -16,6 +20,7 @@
             <li>
                 {{ pr.name }} | 
                 {{ pr.description }}
+                <img src="{{ pr.image.url }}" alt="">
             </li>
         {% endfor %}
     </ul>
