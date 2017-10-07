@@ -13,6 +13,9 @@
     <h1 style="color:red">
         {{ title }}
     </h1>
+
+    <a href="{% url 'new_product' %}">Add new product</a>
+
     <ul>
         <!-- Templates engine Django-->
         {% for pr in product %}

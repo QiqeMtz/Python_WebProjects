@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock styles %}
+
+{% block page_title %}
+    New Article
+{% endblock page_title %}   
+
+{% block content %}
+    <h1>New Article</h1>
+
+    <form method="POST">
+        <!-- Siempre al crear un formulario usar csrf_token para evitar Cross Site Request Forgery-->
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock content %}

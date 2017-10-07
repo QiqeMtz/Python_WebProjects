@@ -12,3 +12,7 @@ class Product(models.Model):
     # Funcion para nombrar al objeto con el valor que se le defina en el modelo
     def __str__(self):
         return self.name
+
+    # Ordenar objetos en la bd, en el admin
+    class Meta:
+        ordering = ('id',)
