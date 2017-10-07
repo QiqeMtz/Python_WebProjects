@@ -1,28 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- etiqueta de django para cargar los archivos estaticos como archivos css -->
+{% extends "base.html" %}
+
+{% block styles %}
     {% load staticfiles %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hello World</title>
-    <!-- aqui se observa como se utiliza el tag para cargar un css utilizando django -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-</head>
-<body>
+{% endblock styles %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock page_title %}   
+
+{% block content %}
     <h1 style="color:red">
-        Hola
+        {{ title }}
     </h1>
     <ul>
         <!-- Templates engine Django-->
         {% for pr in product %}
             <li>
-                {{ pr.name }} | 
-                {{ pr.description }}
+                <!-- tag de django para llamar a una vista, que enviará a una URL para obtener el detalle del producto -->
+                <a href="{% url 'product_detail' pr.pk %}">{{ pr.name }}</a>
+                 | {{ pr.description }}
                 <img src="{{ pr.image.url }}" alt="">
             </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock content %}
