@@ -30,7 +30,8 @@ def product_detail(request, pk):
 
 def new_product(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        # request.FILES se usa cuando se trabaja con archivos en los formularios
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
             return HttpResponseRedirect('/')

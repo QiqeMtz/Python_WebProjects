@@ -11,8 +11,8 @@
 
 {% block content %}
     <h1>New Article</h1>
-
-    <form method="POST">
+    <!-- El multipar form data es el encriptado que se usa cuando se trabaja con archivos -->
+    <form method="POST" enctype="multipart/form-data">
         <!-- Siempre al crear un formulario usar csrf_token para evitar Cross Site Request Forgery-->
         {% csrf_token %}
         {{ form.as_p }}
