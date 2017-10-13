@@ -10,7 +10,7 @@ def hello_word(request):
     #return render(request, 'index.html')+
     product = Product.objects.order_by('id')
     template = loader.get_template('index.html')
-    title = 'Product List'
+    title = 'Product List - Django'
     context = {
         'product': product,
         'title': title
