@@ -1,6 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
+
+from django.views.generic import ListView
+
 from .models import Product
 from .forms import ProductForm
 # Create your views here.
@@ -42,3 +45,8 @@ def new_product(request):
         'form': form
     }
     return HttpResponse(template.render(context, request))
+
+
+class ProductList(ListView):
+    model = Product
+    

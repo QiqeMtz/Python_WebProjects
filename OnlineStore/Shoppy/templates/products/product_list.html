@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock styles %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock page_title %}   
+
+{% block content %}
+    <h1 style="color:red">
+        {{ title }}
+    </h1>
+
+    <a href="{% url 'new_product' %}">Add new product</a>
+
+    <ul>
+        <!-- Templates engine Django-->
+        {% for pr in object_list %}
+            <li>
+                <!-- tag de django para llamar a una vista, que enviará a una URL para obtener el detalle del producto -->
+                <a href="{% url 'product_detail' pr.pk %}">{{ pr.name }}</a>
+                 | {{ pr.description }}
+                <img src="{{ pr.image.url }}" alt="">
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
