@@ -12,9 +12,14 @@
 {% block content %}
     <h1 style="color:red">
         {{ title }}
+        {% if user.is_authenticated %}
+            <h3>{{ user.username }} || <a href="{% url "products:logout" %}">Logout</a></h3>
+        {% else %}
+            <h3><a href="{% url "products:authentication" %}">Login</a></h3>
+        {% endif %}
     </h1>
 
-    {% comment %} <a href="{% url 'new_product' %}">Add new product</a> {% endcomment %}
+    <a href="{% url "products:new" %}">Add new product</a>
 
     <ul>
         <!-- Templates engine Django-->
