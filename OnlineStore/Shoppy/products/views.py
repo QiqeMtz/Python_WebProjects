@@ -3,6 +3,7 @@ from django.template import loader
 from django.shortcuts import render, get_object_or_404
 
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 
 from .models import Product
 from .forms import ProductForm
@@ -46,7 +47,9 @@ def new_product(request):
     }
     return HttpResponse(template.render(context, request))
 
-
+# using class based views
 class ProductList(ListView):
     model = Product
-    
+
+class ProductDetail(DetailView):
+    model = Product
