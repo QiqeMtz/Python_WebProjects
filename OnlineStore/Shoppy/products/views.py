@@ -8,8 +8,12 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
+from django.contrib.auth.decorators import login_required
+
 from .models import Product
 from .forms import ProductForm
+
+from .mixins import LoginRequiredMixin
 # Create your views here.
 
 def hello_word(request):
@@ -35,6 +39,8 @@ def product_detail(request, pk):
     }
     return HttpResponse(template.render(context, request))
 
+#decorator to require login when the user try to add a new product
+@login_required()
 def new_product(request):
     if request.method == 'POST':
         # request.FILES se usa cuando se trabaja con archivos en los formularios
@@ -66,9 +72,11 @@ def auth_login(request):
             return redirect('/')
     context = {}
     return render(request, 'login/login.html', context)
+
 # using class based views
 class ProductList(ListView):
     model = Product
 
-class ProductDetail(DetailView):
+
+class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
